@@ -1,0 +1,199 @@
+#
+# ~/.config/sway/config
+#
+
+################################################################################
+# Constants                                                                    #
+################################################################################
+
+set $mod Mod4
+set $up k
+set $left h
+set $down j
+set $right l
+# The internal display
+set $idp eDP-1
+# The external display
+set $edp DP-1
+# The Black Widdow keyboard
+set $bwkb "5426:577:Razer_Razer_BlackWidow"
+# The internal keyboard
+set $inkb "1:1:AT_Translated_Set_2_keyboard"
+set $wallpaper "$HOME/Pictures/weasels-ripped-my-flesh.jpg"
+# The gsettings schema for GTK 4 settings
+set $gschema org.gnome.desktop.interface
+
+
+################################################################################
+# Options                                                                      #
+################################################################################
+
+#
+# Miscilaneous Options
+#
+focus_follows_mouse no
+default_border none
+default_floating_border none
+floating_modifier $mod
+# Set the cursor theme
+seat seat0 xcursor_theme Breeze_Snow
+
+#
+# Bar Options
+#
+bar {
+    swaybar_command waybar
+}
+
+#
+# Output Options
+#
+output * bg $wallpaper tile 
+output $edp pos 0 0 res 3840x2160 adaptive_sync on
+output $idp pos 0 3840 res 1920x1080 adaptive_sync on
+# Focus on the external display, by default
+focus output $edp
+
+#
+# Input Options
+#
+input $bwkb {
+    xkb_layout us
+    # Map caps-lock to super
+    xkb_options caps:super
+}
+input $inkb {
+    xkb_layout us
+    # Map caps-lock to super
+    xkb_options caps:super
+}
+
+
+################################################################################
+# Startup                                                                      #
+################################################################################
+
+# This is required for Visual Studio Code to work under wayland
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# The following correctly sets the GTK theme for GTK 4 via gsettings
+exec_always {
+  gsettings set $gschema gtk-theme "Breeze-Dark"
+  gsettings set $gschema icon-theme "breeze"
+  gsettings set $gschema cursor-theme "Breeze_Snow"
+  gsettings set $gschema font-name "Ubuntu 11"
+  gsettings set $gschema text-scaling-factor "1"
+}
+
+
+################################################################################
+# Keybindings                                                                  #
+################################################################################
+
+#
+# Miscilaneous Keybindings
+#
+bindsym $mod+r reload
+bindsym $mod+e exit
+bindsym $mod+q kill
+bindsym $mod+d exec menu.sh
+bindsym $mod+Return exec alacritty
+# Toggle the split orientation (i.e., horizontal or vertical)
+bindsym $mod+s split toggle
+# Switch focus between tiling and floating windows
+bindsym $mod+t focus mode_toggle
+# Toggle the focused window between floating and tiling mode
+bindsym $mod+f floating toggle
+# Take a screenshot
+bindsym Print exec --no-startup-id snip.sh
+
+#
+# Scratchpad
+#
+bindsym $mod+Shift+i move window to scratchpad
+bindsym $mod+i scratchpad show
+
+#
+# Resizing a Window
+#
+bindsym $mod+Ctrl+$up resize grow height 5 px
+bindsym $mod+Ctrl+Up resize grow height 5 px
+bindsym $mod+Ctrl+$left resize shrink width 5 px
+bindsym $mod+Ctrl+Left resize shrink width 5 px
+bindsym $mod+Ctrl+$down resize shrink height 5 px
+bindsym $mod+Ctrl+Down resize shrink height 5 px
+bindsym $mod+Ctrl+$right resize grow width 5 px
+bindsym $mod+Ctrl+Right resize grow width 5 px
+
+# 
+# Focusing on a Window
+#
+bindsym $mod+$up focus up
+bindsym $mod+Up focus up
+bindsym $mod+$left focus left
+bindsym $mod+Left focus left
+bindsym $mod+$down focus down
+bindsym $mod+Down focus down
+bindsym $mod+$right focus right
+bindsym $mod+Right focus right
+
+#
+# Focusing on a Workspace
+#
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+#
+# Moving Windows within a Workspace
+#
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Right move right
+
+#
+# Moving Windows between Workspaces
+#
+bindsym $mod+Shift+1 move workspace 1
+bindsym $mod+Shift+2 move workspace 2
+bindsym $mod+Shift+3 move workspace 3
+bindsym $mod+Shift+4 move workspace 4
+bindsym $mod+Shift+5 move workspace 5
+bindsym $mod+Shift+6 move workspace 6
+bindsym $mod+Shift+7 move workspace 7
+bindsym $mod+Shift+8 move workspace 8
+bindsym $mod+Shift+9 move workspace 9
+bindsym $mod+Shift+0 move workspace 10
+
+#
+# Media Buttons
+#
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 1
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 1
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86MonBrightnessUp exec --no-startup-id bctl +5
+bindsym XF86MonBrightnessDown exec --no-startup-id bctl -5
+
+#
+# Switches
+#
+bindswitch --reload --locked lid:on output $idp disable
+bindswitch --reload --locked lid:off output $idp enable
+
+#
+# vim: set syntax=swayconfig:
+#
