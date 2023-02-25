@@ -1,6 +1,6 @@
 syntax on
 
-" Enable mode lines (i.e, vim: command:)
+" Enable mode lines
 set modeline
 " Set the tab size to 4 spaces
 set tabstop=4 shiftwidth=4 expandtab
