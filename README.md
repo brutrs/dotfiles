@@ -3,7 +3,7 @@
 ## Index
 
 | Source           | Destination                         |
-+------------------+-------------------------------------+
+|------------------|-------------------------------------|
 | `bashrc`         | `~/.bashrc`                         |
 | `bash_profile`   | `~/.bash_profile`                   |
 | `sway`           | `~/.config/sway/config`             |
