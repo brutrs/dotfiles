@@ -27,6 +27,6 @@ for FILE in "${!FILES[@]}"; do
     if test "$1" == "-p" || test "$1" == "--preview"; then
         echo "$FILE -> $DST"
     else
-        mkdir -p "$(dirname $DST)" && cp --force --link "$FILE" "$DST"
+        mkdir -p "$(dirname $DST)" && ln -f "$FILE" "$DST"
     fi
 done
