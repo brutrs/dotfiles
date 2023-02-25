@@ -19,7 +19,7 @@ set $edp DP-1
 set $bwkb "5426:577:Razer_Razer_BlackWidow"
 # The internal keyboard
 set $inkb "1:1:AT_Translated_Set_2_keyboard"
-set $wallpaper "$HOME/Pictures/weasels-ripped-my-flesh.jpg"
+set $wallpaper "$(xdg-user-dir PICTURES)/weasels-ripped-my-flesh.jpg"
 # The gsettings schema for GTK 4 settings
 set $gschema org.gnome.desktop.interface
 
