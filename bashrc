@@ -13,5 +13,7 @@ alias grep='grep --color=auto'
 PS1="\[\e[35m\]>>>\[\e[0m\] "
 PS2="\[\e[35m\]  >\[\e[0m\] "
 PATH="$PATH:$HOME/.local/bin"
+GTK_THEME=Breeze-Dark
+XCURSOR_THEME=Breeze_Snow
 
-export PS1 PS2 PATH
+export PS1 PS2 PATH GTK_THEME XCURSOR_THEME
