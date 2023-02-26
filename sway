@@ -105,6 +105,8 @@ bindsym $mod+t focus mode_toggle
 bindsym $mod+f floating toggle
 # Take a screenshot
 bindsym Print exec --no-startup-id snip.sh
+# Take a screenshot and copy the resulting image to the clipboard
+bindsym Shift+Print exec --no-startup-id snip.sh --clipboard
 
 #
 # Scratchpad
