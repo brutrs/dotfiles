@@ -6,5 +6,5 @@
 
 # Start Sway if, and only, if we are logged in on TTY1
 if test `tty` == '/dev/tty1'; then
-    exec sway
+    exec sway &>>$HOME/.sway_log
 fi
