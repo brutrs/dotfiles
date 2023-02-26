@@ -12,7 +12,7 @@ alias grep='grep --color=auto'
 
 PS1="\[\e[35m\]>>>\[\e[0m\] "
 PS2="\[\e[35m\]  >\[\e[0m\] "
-PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/.local/bin:$HOME/.ghcup/bin:$HOME/.cabal/bin"
 GTK_THEME=Breeze-Dark
 XCURSOR_THEME=Breeze_Snow
 SWAY_LOG="$HOME/.sway_log"
