@@ -15,5 +15,6 @@ PS2="\[\e[35m\]  >\[\e[0m\] "
 PATH="$PATH:$HOME/.local/bin"
 GTK_THEME=Breeze-Dark
 XCURSOR_THEME=Breeze_Snow
+SWAY_LOG="$HOME/.sway_log"
 
-export PS1 PS2 PATH GTK_THEME XCURSOR_THEME
+export PS1 PS2 PATH GTK_THEME XCURSOR_THEME SWAY_LOG
